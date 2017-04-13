@@ -10,6 +10,7 @@ typedef struct		s_lst
 	int				start;
 	int				end;
 	struct s_lst 	*next;
+	char			**cnx;
 }					t_lst;
 
 t_lst				*ft_init_lst(t_lst *lst);
@@ -21,8 +22,11 @@ int					ft_check_com(char *line, t_lst **room);
 int					ft_check_tube(char *line);
 int					ft_disp_data(char *line, t_lst **room, t_lst **tube);
 int					ft_getdata(t_lst **room, t_lst **tube);
-
-
-
-
+int					ft_checkname(t_lst *room, t_lst *tube);
+int					ft_checkdouble(t_lst *room);
+int					ft_check_stend(t_lst *room);
+int					ft_count_cnx(char *room, t_lst *tube);
+char				*ft_get_cnx(char *room, char *tube);
+t_lst				*ft_create_cnx(t_lst *room, t_lst *tube);
+void				ft_display_cnx(t_lst *room);
 #endif

@@ -18,7 +18,9 @@ NAME    =   lem-in
 SRCS    =   src/check.c \
 			src/get_data.c \
 			src/data_list.c \
- 
+			src/check_graph.c \
+			src/graph.c
+
 OBJS    =   $(SRCS:.c=.o)
 
 all:        $(NAME)
@@ -28,11 +30,11 @@ $(NAME):    $(OBJS)
 			$(CC) -o $(NAME) $(OBJS) $(LIB)
 
 clean:
-		$(RM) $(OBJS)
-		Make -C ./libft fclean
+			$(RM) $(OBJS)
+			Make -C ./libft fclean
 
 fclean:     clean
-	$(RM) $(NAME)
+			$(RM) $(NAME)
 
 re:         fclean all
 
