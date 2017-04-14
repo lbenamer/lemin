@@ -27,7 +27,6 @@ int		ft_checkdouble(t_lst *room)
 
 int		ft_check_stend(t_lst *room)
 {
-
 	int start;
 	int	end;
 
@@ -45,3 +44,5 @@ int		ft_check_stend(t_lst *room)
 		return (0);
 	return (1);
 }
+
+

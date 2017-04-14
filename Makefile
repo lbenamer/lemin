@@ -19,7 +19,8 @@ SRCS    =   src/check.c \
 			src/get_data.c \
 			src/data_list.c \
 			src/check_graph.c \
-			src/graph.c
+			src/graph.c \
+			src/fifo.c \
 
 OBJS    =   $(SRCS:.c=.o)
 

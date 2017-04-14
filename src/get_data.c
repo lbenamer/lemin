@@ -47,7 +47,7 @@ int		ft_getdata(t_lst **room, t_lst **tube)
 	line = NULL;
 	while(get_next_line(0, &line) > 0)
 	{	
-		if(!ft_strlen(line))
+		if(!ft_strlen_p(line))
 			return (0);
 		else if(!ft_disp_data(line, room, tube))
 			return (0);
@@ -70,13 +70,22 @@ void	ft_displaylst(t_lst *lst)
 		}
 	}
 }
-
+void	ft_display_way(t_lst *way)
+{
+	while(way)
+	{
+		printf("%s\n", way->line);
+		way = way->next;
+	}
+}
 int main(void)
 {
 	int n;
-	int debug = 1;
+	int debug = 13;
 	t_lst *room;
 	t_lst *tube;
+	t_lst *fil;
+	t_lst *way;
 
 	if(!(room = (t_lst*)ft_memalloc(sizeof(t_lst*))))
 		return (0);
@@ -102,8 +111,16 @@ int main(void)
 	}
 	else
 	{
+
 		room = ft_create_cnx(room, tube);
-		ft_display_cnx(room);
+		//ft_display_cnx(room);
+		fil = ft_fifo(room);
+		//ft_display_fil(fil);
+		way = ft_getway(fil);
+		if(ft_check_way(fil, room))
+			ft_display_way(way);
+		else
+			ft_printf("ERROR\n");
 
 	}
 	//printf("segfault\n");
