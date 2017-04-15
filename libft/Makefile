@@ -105,7 +105,7 @@ OBJ		=		$(SRC:.c=.o)
 
 NAME	=		libft.a
 
-CFLAGS		=		-Wextra -Wall -Werror -I. -g3
+CFLAGS		=		-Wextra -Wall -Werror
 
 all:	$(NAME)
 

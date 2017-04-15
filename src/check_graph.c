@@ -46,3 +46,36 @@ int		ft_check_stend(t_lst *room)
 }
 
 
+t_lst	*ft_next(t_lst *way)
+{
+	way->next->antz = way->antz;
+	return (way);
+}
+
+t_lst	*ft_conn_prev(t_lst *way)
+{
+	t_lst *tmp;
+
+	tmp = way;
+	while (tmp)
+	{
+		if (tmp->next)
+			tmp->next->pr = tmp;
+		tmp = tmp->next; 
+	}
+	return (way);
+}
+
+t_lst	*ft_zero_antz(t_lst *way)
+{
+	t_lst *tmp;
+
+	tmp = way;
+	while (tmp)
+	{
+		tmp->antz = 0;
+		tmp = tmp->next;
+	}
+	return (way);
+}
+

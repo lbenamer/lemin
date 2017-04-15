@@ -21,23 +21,9 @@ char	*ft_get_cnx(char *room, char *tube)
 
 	tab = ft_strsplit(tube, '-');
 	if (!ft_strcmp(tab[0], room))
-		return(tab[1]);
+		return (tab[1]);
 	else
-		return(tab[0]);
-}
-
-void	ft_display_cnx(t_lst *room)
-{
-	int i;
-
-	while (room)
-	{
-		i = -1;
-		printf("room = %s\n", room->line);
-		while(room->cnx[++i])
-			printf("connex %d = %s\n", i, room->cnx[i]);
-		room = room->next;
-	}
+		return (tab[0]);
 }
 
 t_lst		*ft_create_cnx(t_lst *room, t_lst *tube)
@@ -67,4 +53,24 @@ t_lst		*ft_create_cnx(t_lst *room, t_lst *tube)
 		tmp2 = tmp2->next;
 	}
 	return (room);
+}
+
+void	ft_display_graph(t_lst *room, t_lst *tube, int n)
+{
+	ft_printf("%d\n", n);
+	while (room)
+	{
+		if (room->start)
+			ft_printf("##start\n");
+		if (room->end)
+			ft_printf("##end\n");
+		ft_printf("%s\n", room->save);
+		room = room->next;
+	}
+	while (tube)
+	{
+		ft_printf("%s\n", tube->line);
+		tube = tube->next;
+	}
+	ft_printf("\n");
 }

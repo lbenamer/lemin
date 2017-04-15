@@ -37,7 +37,7 @@ int		ft_check_com(char *line, t_lst **room)
 			return (1);
 		}
 	}
-	else if(!ft_strcmp("##start", line))
+	else if (!ft_strcmp("##start", line))
 	{
 		if (get_next_line(0, &line) <= 0)
 			return (0);
@@ -55,7 +55,6 @@ int		ft_check_tube(char *line)
 	size_t len;
 
 	len = ft_strlen(line);
-//	printf("line = %s\n", line);
 	if (line[0] == 'L')
 		return (0);
 	else if (line[0] == '-')
@@ -72,15 +71,15 @@ int		ft_check_tube(char *line)
 
 int 	ft_check_lst(t_lst *room, char *name)
 {
-	int i;
+	int 	i;
+	char **tab;
 
-	while(room != NULL)
+	while (room != NULL)
 	{	
 		i = 0;
-		while(room->line[i] != ' ' && room->line[i])
-			++i;
-		room->line = ft_strsub(room->line, 0, i);
-		if(!ft_strcmp(name, room->line))
+		tab = ft_strsplit(room->line, ' ');
+		room->line = tab[0];
+		if (!ft_strcmp(name, room->line))
 			return (1);
 		else
 			room = room->next;
@@ -94,21 +93,21 @@ int		ft_checkname(t_lst *room, t_lst *tube)
 	char *room1;
 	char *room2;
 
-	if(!room->line || !tube->line)
-		return(0);
-	while(tube != NULL)
+	if (!room->line || !tube->line)
+		return (0);
+	while (tube != NULL)
 	{	
 		i  = 0;
-		while(tube->line[i] != '-' && tube->line[i])
+		while (tube->line[i] != '-' && tube->line[i])
 			++i;
 		room1 = ft_strsub(tube->line, 0, i);
 		room2 = tube->line + i + 1;
-		if(!ft_strcmp(room1, room2))
-			return(0);
-		if(!ft_check_lst(room, room1))
-			return(0);
-		if(!ft_check_lst(room, room2))
-			return(0);
+		if (!ft_strcmp(room1, room2))
+			return (0);
+		if (!ft_check_lst(room, room1))
+			return (0);
+		if (!ft_check_lst(room, room2))
+			return (0);
 		tube = tube->next;
 	}
 	return (1);
