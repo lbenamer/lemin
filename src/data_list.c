@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   data_list.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbenamer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/17 18:49:14 by lbenamer          #+#    #+#             */
+/*   Updated: 2017/04/17 18:49:16 by lbenamer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-t_lst 	*ft_init_lst(void)
+t_lst	*ft_init_lst(void)
 {
 	t_lst *lst;
 
@@ -14,10 +26,10 @@ t_lst 	*ft_init_lst(void)
 	return (lst);
 }
 
-
 t_lst	*ft_new_lst(char *line, int start, int end)
 {
 	t_lst *room;
+
 	if (!(room = malloc(sizeof(t_lst))))
 		return (NULL);
 	room->line = ft_strdup(line);
@@ -26,7 +38,6 @@ t_lst	*ft_new_lst(char *line, int start, int end)
 	room->next = NULL;
 	return (room);
 }
-
 
 t_lst	*ft_add_lst(t_lst *room, char *line, int start, int end)
 {
@@ -47,7 +58,7 @@ t_lst	*ft_add_lst(t_lst *room, char *line, int start, int end)
 	return (room);
 }
 
-t_lst 	*ft_new_fil(char *room, char *prev)
+t_lst	*ft_new_fil(char *room, char *prev)
 {
 	t_lst *fil;
 

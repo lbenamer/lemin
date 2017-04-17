@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbenamer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/17 18:45:01 by lbenamer          #+#    #+#             */
+/*   Updated: 2017/04/17 18:45:03 by lbenamer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 int		ft_check_room(char *line)
@@ -61,21 +73,21 @@ int		ft_check_tube(char *line)
 		return (0);
 	else if (line[len - 1] == '-')
 		return (0);
-	else if(ft_strchr(line, ' '))
+	else if (ft_strchr(line, ' '))
 		return (0);
 	line = ft_strchr(line, '-');
-	if(line[1] == 'L')
+	if (line[1] == 'L')
 		return (0);
 	return (1);
 }
 
-int 	ft_check_lst(t_lst *room, char *name)
+int		ft_check_lst(t_lst *room, char *name)
 {
-	int 	i;
-	char **tab;
+	int		i;
+	char	**tab;
 
 	while (room != NULL)
-	{	
+	{
 		i = 0;
 		tab = ft_strsplit(room->line, ' ');
 		room->line = tab[0];
@@ -89,15 +101,15 @@ int 	ft_check_lst(t_lst *room, char *name)
 
 int		ft_checkname(t_lst *room, t_lst *tube)
 {
-	int i;
-	char *room1;
-	char *room2;
+	int		i;
+	char	*room1;
+	char	*room2;
 
 	if (!room->line || !tube->line)
 		return (0);
 	while (tube != NULL)
-	{	
-		i  = 0;
+	{
+		i = 0;
 		while (tube->line[i] != '-' && tube->line[i])
 			++i;
 		room1 = ft_strsub(tube->line, 0, i);

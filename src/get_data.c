@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_data.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbenamer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/17 18:59:58 by lbenamer          #+#    #+#             */
+/*   Updated: 2017/04/17 19:00:00 by lbenamer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-int ft_getnb_antz(void)
+int		ft_getnb_antz(void)
 {
-	char *line;
-	int i;
+	char	*line;
+	int		i;
 
 	i = -1;
 	line = NULL;
-	get_next_line(0, &line);
+	if (get_next_line(0, &line) <= 0)
+		return (0);
 	while (line[++i])
 		if (!ft_isdigit(line[i]))
 			return (0);
@@ -46,7 +59,7 @@ int		ft_getdata(t_lst **room, t_lst **tube)
 
 	line = NULL;
 	while (get_next_line(0, &line) > 0)
-	{	
+	{
 		if (!ft_strlen_p(line))
 			return (0);
 		else if (!ft_disp_data(line, room, tube))
@@ -55,24 +68,25 @@ int		ft_getdata(t_lst **room, t_lst **tube)
 	return (1);
 }
 
-int 	ft_check_data(t_lst *room , t_lst *tube, int n)
+int		ft_check_data(t_lst *room, t_lst *tube, int n)
 {
-	if (!ft_checkname(room, tube) || !ft_checkdouble(room) || !ft_check_stend(room) || n <= 0)
+	if (!ft_checkname(room, tube) || !ft_checkdouble(room) ||
+	!ft_check_stend(room) || n <= 0)
 	{
-		ft_printf("ERROR 1\n");
+		ft_printf("ERROR\n");
 		return (0);
 	}
 	else
 		return (1);
 }
 
-int main(void)
+int		main(void)
 {
-	int n;
-	t_lst *room;
-	t_lst *tube;
-	t_lst *fil;
-	t_lst *way;
+	int		n;
+	t_lst	*room;
+	t_lst	*tube;
+	t_lst	*fil;
+	t_lst	*way;
 
 	room = ft_init_lst();
 	tube = ft_init_lst();

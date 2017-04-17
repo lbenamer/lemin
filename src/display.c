@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbenamer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/17 18:52:40 by lbenamer          #+#    #+#             */
+/*   Updated: 2017/04/17 18:52:42 by lbenamer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
-t_lst 	*ft_shot(t_lst *way, int antz, int nb)
+t_lst	*ft_shot(t_lst *way, int antz, int nb)
 {
 	t_lst *shot;
 
@@ -16,7 +28,7 @@ t_lst 	*ft_shot(t_lst *way, int antz, int nb)
 	return (shot);
 }
 
-int 	ft_check_end(t_lst *way, int nb)
+int		ft_check_end(t_lst *way, int nb)
 {
 	while (way->next)
 		way = way->next;
@@ -45,7 +57,6 @@ void	ft_disp_shot(t_lst *way)
 	ft_printf("\n");
 }
 
-
 void	ft_golem(t_lst *way, int nb)
 {
 	int antz;
@@ -55,18 +66,18 @@ void	ft_golem(t_lst *way, int nb)
 	way = ft_conn_prev(way);
 	while (!ft_check_end(way, nb))
 	{
-	 	way = ft_shot(way, antz, nb);
+		way = ft_shot(way, antz, nb);
 		ft_disp_shot(way);
-	 	++antz;
-	 }
+		++antz;
+	}
 }
 
-t_lst *ft_save_line(t_lst *room)
+t_lst	*ft_save_line(t_lst *room)
 {
 	t_lst *tmp;
 
 	tmp = room;
-	while(tmp)
+	while (tmp)
 	{
 		tmp->save = ft_strdup(tmp->line);
 		tmp = tmp->next;

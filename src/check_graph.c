@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_graph.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lbenamer <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/04/17 18:47:51 by lbenamer          #+#    #+#             */
+/*   Updated: 2017/04/17 18:47:52 by lbenamer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lemin.h"
 
 int		ft_checkdouble(t_lst *room)
 {
-	t_lst 	*tmp;
-	t_lst 	*tmp2;
+	t_lst	*tmp;
+	t_lst	*tmp2;
 	int		n;
 
 	tmp = room;
@@ -45,7 +57,6 @@ int		ft_check_stend(t_lst *room)
 	return (1);
 }
 
-
 t_lst	*ft_next(t_lst *way)
 {
 	way->next->antz = way->antz;
@@ -61,7 +72,7 @@ t_lst	*ft_conn_prev(t_lst *way)
 	{
 		if (tmp->next)
 			tmp->next->pr = tmp;
-		tmp = tmp->next; 
+		tmp = tmp->next;
 	}
 	return (way);
 }
@@ -78,4 +89,3 @@ t_lst	*ft_zero_antz(t_lst *way)
 	}
 	return (way);
 }
-
